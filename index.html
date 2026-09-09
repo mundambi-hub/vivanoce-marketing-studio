@@ -46,10 +46,12 @@ pre{white-space:pre-wrap;word-break:keep-all;margin:12px 0 0;min-height:390px;ba
 </div>
 <label for="target">광고 타깃</label>
 <select id="target">
+<option value="family">온 가족 데일리</option>
+<option value="couple">부부·커플 함께 신기</option>
 <option value="parents">부모님 선물</option>
 <option value="standing">오래 서서 일하는 사람</option>
-<option value="walking">걷기·여행을 즐기는 중장년층</option>
-<option value="daily">편한 데일리화를 찾는 40~60대</option>
+<option value="walking">걷기·여행을 즐기는 사람</option>
+<option value="daily">편한 데일리화를 찾는 사람</option>
 </select>
 <label for="color">제품 색상</label>
 <select id="color">
@@ -81,10 +83,12 @@ document.querySelectorAll('.type').forEach(btn=>btn.addEventListener('click',()=
  btn.classList.add('active'); selectedType=btn.dataset.type;
 }));
 const targets={
- parents:{label:'부모님 선물',hook:'부모님 신발, 디자인보다 편안함만 보고 고르셨나요?',scene:'50~60대 한국인 부모와 성인 자녀가 밝고 정돈된 거실에서 신발을 선물하고 함께 살펴보는 자연스러운 순간'},
- standing:{label:'오래 서서 일하는 사람',hook:'하루 종일 서 있는 발, 신발부터 달라야 합니다.',scene:'오래 서서 일한 50대 한국인 여성이 퇴근 후 편안한 표정으로 신발 끈을 정리하는 현실적인 실내 장면'},
- walking:{label:'걷기·여행 중장년층',hook:'많이 걷는 날일수록 신발 선택이 중요합니다.',scene:'햇살 좋은 산책로를 여유롭게 걷는 세련된 50대 한국인 여성의 자연스러운 전신 장면'},
- daily:{label:'40~60대 데일리',hook:'편한 신발은 예쁘기 어렵다는 생각, 바꿔보세요.',scene:'미니멀한 도심 카페 앞에서 캐주얼 의상에 스니커즈를 매치한 세련된 40대 한국인 여성'}
+ family:{label:'온 가족 데일리',hook:'가족 신발, 이제 편안함과 스타일을 함께 고르세요.',scene:'20대 성인 자녀부터 50~60대 부모까지 다양한 연령의 한국인 가족이 밝은 주말 외출길에서 각자의 스타일에 맞게 신발을 신고 함께 걷는 자연스러운 장면'},
+ couple:{label:'부부·커플 함께 신기',hook:'함께 걷는 시간이 많다면, 신발도 함께 편해야 하니까.',scene:'나이에 한정되지 않은 한국인 부부 또는 성인 커플이 가을 산책로에서 서로 다른 컬러의 스니커즈를 신고 자연스럽게 걷는 장면'},
+ parents:{label:'부모님 선물',hook:'부모님께 매일 손이 가는 편안함을 선물하세요.',scene:'한국인 부모와 성인 자녀가 밝고 정돈된 거실에서 신발을 선물하고 함께 살펴보는 자연스러운 순간'},
+ standing:{label:'오래 서서 일하는 사람',hook:'하루 종일 서 있는 발, 신발부터 달라야 합니다.',scene:'오래 서서 일한 한국인 직장인이 퇴근 후 편안한 표정으로 신발 끈을 정리하는 현실적인 실내 장면'},
+ walking:{label:'걷기·여행을 즐기는 사람',hook:'많이 걷는 날일수록 신발 선택이 중요합니다.',scene:'햇살 좋은 산책로를 여유롭게 걷는 한국인 성인의 자연스러운 전신 장면'},
+ daily:{label:'편한 데일리화를 찾는 사람',hook:'편한 신발은 예쁘기 어렵다는 생각, 바꿔보세요.',scene:'미니멀한 도심 카페 앞에서 캐주얼 의상에 스니커즈를 매치한 한국인 성인 모델'}
 };
 function imageText(t,c){return `[광고 이미지 프롬프트]
 첨부한 VA2502 제품 사진을 최종 이미지 속 신발의 절대적인 제품 기준으로 사용한다. 신발의 앞코, 가죽 패널, 절개선, 측면 타공 배열, 금속 아일렛, 뒤축 패널, 두꺼운 화이트 아웃솔, 스티치와 좌우 구조를 임의로 변경하지 않는다.
@@ -142,7 +146,7 @@ function socialText(t,c){return `[유튜브 쇼츠]
 [틱톡]
 편안함만 보고 고른 신발 같지 않죠?
 깔끔한 배색과 압력 분산 구조를 담은 VA2502 ${c} 🤍
-#비바로체 #편한운동화 #중년패션 #데일리신발 #수제화
+#비바로체 #편한운동화 #온가족신발 #데일리신발 #수제화
 
 [인스타 릴스]
 편한 신발을 찾다 보면 디자인을 포기하게 될 때가 있잖아요.
