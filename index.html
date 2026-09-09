@@ -53,6 +53,15 @@ pre{white-space:pre-wrap;word-break:keep-all;margin:12px 0 0;min-height:390px;ba
 <option value="walking">걷기·여행을 즐기는 사람</option>
 <option value="daily">편한 데일리화를 찾는 사람</option>
 </select>
+<label for="reference">광고 레퍼런스 스타일</label>
+<select id="reference">
+<option value="family">따뜻한 온 가족 감성</option>
+<option value="gift">명절·생일 선물 캠페인</option>
+<option value="walk">일상 속 함께 걷기</option>
+<option value="tech">39년 기술·기능 설명</option>
+<option value="ugc">실제 사용 후기형 UGC</option>
+<option value="fashion">감각적인 데일리 패션</option>
+</select>
 <label for="color">제품 색상</label>
 <select id="color">
 <option>화이트</option><option>블랙</option><option>블루</option><option>핑크</option><option>그레이</option>
@@ -90,11 +99,21 @@ const targets={
  walking:{label:'걷기·여행을 즐기는 사람',hook:'많이 걷는 날일수록 신발 선택이 중요합니다.',scene:'햇살 좋은 산책로를 여유롭게 걷는 한국인 성인의 자연스러운 전신 장면'},
  daily:{label:'편한 데일리화를 찾는 사람',hook:'편한 신발은 예쁘기 어렵다는 생각, 바꿔보세요.',scene:'미니멀한 도심 카페 앞에서 캐주얼 의상에 스니커즈를 매치한 한국인 성인 모델'}
 };
-function imageText(t,c){return `[광고 이미지 프롬프트]
+const references={
+ family:{name:'따뜻한 온 가족 감성',direction:'여러 세대가 한 공간에서 자연스럽게 연결되는 따뜻한 가족 서사. 상품을 과하게 들이밀지 않고 함께 걷는 순간과 표정을 먼저 보여준다.',copy:'우리 가족의 매일이 조금 더 편안하도록'},
+ gift:{name:'명절·생일 선물 캠페인',direction:'선물을 건네는 장면에서 시작해 실제 착용과 함께 걷는 장면으로 이어지는 감정 중심 구성. 마지막에 제품과 혜택을 명확히 제시한다.',copy:'마음을 전하는 가장 편안한 방법'},
+ walk:{name:'일상 속 함께 걷기',direction:'집 앞 산책, 여행, 장보기처럼 누구나 공감하는 걷기 상황을 담는다. 세대와 성별이 다른 인물이 각자의 스타일로 같은 브랜드를 신는다.',copy:'함께 걷는 모든 순간에'},
+ tech:{name:'39년 기술·기능 설명',direction:'천연 소가죽, 압력 분산 구조, 수제화 제작 경험을 제품 디테일 컷과 함께 차분하고 신뢰감 있게 설명한다.',copy:'39년이 만든 편안함의 차이'},
+ ugc:{name:'실제 사용 후기형 UGC',direction:'한국의 실제 집이나 현관에서 사용자가 휴대폰으로 직접 촬영한 듯한 자연스러운 후기 형식. 과장된 연기와 스튜디오 느낌을 피한다.',copy:'요즘 가장 자주 신는 신발'},
+ fashion:{name:'감각적인 데일리 패션',direction:'기능성 신발의 전형적인 이미지를 벗어나 계절 코디와 색상 조합을 중심으로 세련되게 보여준다.',copy:'편안함도 스타일이 될 수 있으니까'}
+};
+function imageText(t,c,r){return `[광고 이미지 프롬프트]
 첨부한 VA2502 제품 사진을 최종 이미지 속 신발의 절대적인 제품 기준으로 사용한다. 신발의 앞코, 가죽 패널, 절개선, 측면 타공 배열, 금속 아일렛, 뒤축 패널, 두꺼운 화이트 아웃솔, 스티치와 좌우 구조를 임의로 변경하지 않는다.
 
+참고 광고 방향: ${r.name}. ${r.direction}
 장면: ${t.scene}.
 착용 제품: VA2502 ${c} 컬러.
+캠페인 핵심 문구: “${r.copy}”
 구도: 세로 4:5, 70~85mm 화각, 자연스러운 전신 또는 무릎 아래 중심, 신발이 선명하게 보이게 구성.
 분위기: 한국의 현실적인 공간, 부드러운 자연광, 고급스럽고 담백한 라이프스타일 광고, 과한 보정과 인위적인 AI 질감 금지.
 텍스트를 넣을 수 있도록 상단 중앙과 하단에 충분한 여백 확보.
@@ -103,8 +122,10 @@ function imageText(t,c){return `[광고 이미지 프롬프트]
 [영상 프롬프트]
 모델은 제자리에서 신발 끈을 정리한 뒤 두 걸음 천천히 걷는다. 카메라는 낮은 위치에서 신발을 부드럽게 따라간다. 발과 신발의 형태가 흔들리거나 바뀌지 않으며, 새로운 장식·끈·로고가 생기지 않는다. 6초, 세로 9:16, 자연스러운 실제 광고 영상.`}
 
-function cardsText(t,c){return `[카드뉴스 5장 · 1080×1350]
-1장 — ${t.hook}
+function cardsText(t,c,r){return `[카드뉴스 5장 · 1080×1350]
+레퍼런스 방향 — ${r.name}: ${r.direction}
+1장 — ${r.copy}
+보조 훅 — ${t.hook}
 2장 — 발이 편하려면, 발을 받쳐주는 구조부터 살펴봐야 하니까.
 3장 — 천연 소가죽의 유연함에 압력 분산을 고려한 구조를 더했습니다.
 4장 — VA2502 ${c} / 단정한 배색, 일상에 자연스럽게 어울리는 디자인.
@@ -112,9 +133,10 @@ function cardsText(t,c){return `[카드뉴스 5장 · 1080×1350]
 
 디자인 기준: 상단 중앙 짧은 문구, 신발은 4장부터 정확한 제품 사진 기준으로 노출. 아이보리·웜그레이 배경, 촌스럽거나 병원 광고 같은 표현 금지.`}
 
-function shortsText(t,c){return `[30초 쇼츠 대본]
+function shortsText(t,c,r){return `[30초 쇼츠 대본]
+광고 스타일: ${r.name}
 0~3초
-“${t.hook}”
+“${r.copy}”
 
 3~8초
 “매일 신는 신발일수록
@@ -138,8 +160,8 @@ ${t.label}을 위한 데일리 스니커즈.”
 
 화면 자막은 문장당 1~2줄, 제품명과 핵심 기능만 강조.`}
 
-function socialText(t,c){return `[유튜브 쇼츠]
-제목: 편한 신발은 예쁠 수 없다고요? VA2502
+function socialText(t,c,r){return `[유튜브 쇼츠]
+제목: ${r.copy} | VA2502
 설명: 깔끔한 배색에 편안한 구조를 더한 비바로체 데일리 스니커즈. 오늘의 컬러는 ${c}입니다.
 #비바로체 #기능성수제화 #부모님신발 #천연소가죽 #편한신발
 
@@ -154,8 +176,8 @@ VA2502는 매일 손이 가는 깔끔한 배색에, 발을 편안하게 받쳐�
 ${t.label}용 신발을 찾고 있다면 ${c} 컬러도 눈여겨보세요 :)
 #비바로체 #기능성신발 #부모님선물 #천연가죽신발 #편한스니커즈`}
 function build(){
- const t=targets[document.getElementById('target').value], c=document.getElementById('color').value;
- const parts={image:imageText(t,c),cards:cardsText(t,c),shorts:shortsText(t,c),social:socialText(t,c)};
+ const t=targets[document.getElementById('target').value], r=references[document.getElementById('reference').value], c=document.getElementById('color').value;
+ const parts={image:imageText(t,c,r),cards:cardsText(t,c,r),shorts:shortsText(t,c,r),social:socialText(t,c,r)};
  document.getElementById('result').textContent=selectedType==='all'?Object.values(parts).join('\n\n━━━━━━━━━━━━━━━━━━\n\n'):parts[selectedType];
 }
 document.getElementById('generate').addEventListener('click',build);
