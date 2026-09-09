@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>비바로체 마케팅 제작기</title>
+<style>
+:root{--ink:#20201d;--muted:#716f68;--line:#e9e5dc;--paper:#fbfaf7;--cream:#f3eee4;--gold:#a47b3f;--dark:#242622;--white:#fff}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif}
+button,select{font:inherit}.wrap{max-width:1120px;margin:auto;padding:22px}.hero{background:linear-gradient(135deg,#262823,#41443c);color:#fff;border-radius:28px;padding:32px;display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center;box-shadow:0 18px 50px #28291f1c}
+.eyebrow{color:#d7bd8c;font-size:13px;font-weight:800;letter-spacing:.13em}.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.06;margin:10px 0 14px}.hero p{margin:0;color:#e6e5df;line-height:1.7}
+.product-img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:22px}
+.grid{display:grid;grid-template-columns:320px 1fr;gap:18px;margin-top:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 10px 30px #3936220a}
+.panel h2{font-size:19px;margin:0 0 16px}.facts{display:grid;gap:12px}.fact{padding-bottom:12px;border-bottom:1px solid var(--line)}.fact:last-child{border:0}.fact small{display:block;color:var(--muted);margin-bottom:4px}.fact strong{font-size:15px}
+label{display:block;font-size:13px;font-weight:800;margin:16px 0 7px}select{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;padding:13px}
+.types{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.type{border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px;text-align:left;cursor:pointer}.type.active{border-color:var(--gold);background:#fbf6ec;color:#755525;font-weight:800}
+.generate{width:100%;margin-top:18px;border:0;border-radius:14px;padding:15px;background:var(--dark);color:#fff;font-weight:900;cursor:pointer}
+.result-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.copy{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 13px;font-weight:800;cursor:pointer}
+pre{white-space:pre-wrap;word-break:keep-all;margin:12px 0 0;min-height:390px;background:#f7f5f0;border-radius:16px;padding:18px;line-height:1.7;font-family:inherit;font-size:14px}
+.note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}.badge{display:inline-block;padding:6px 10px;background:var(--cream);border-radius:999px;font-size:12px;font-weight:800;margin:3px 2px}
+@media(max-width:760px){.wrap{padding:12px}.hero{grid-template-columns:1fr;padding:22px;border-radius:20px}.product-img{max-height:260px}.grid{grid-template-columns:1fr}.panel{padding:18px}.types{grid-template-columns:1fr 1fr}pre{min-height:320px}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="hero">
+<div>
+<div class="eyebrow">VIVANOCE · SINCE 1987</div>
+<h1>비바로체<br>마케팅 제작기</h1>
+<p>제품과 타깃을 고르면 이미지·영상 프롬프트부터 카드뉴스, 쇼츠, SNS 문구까지 한 번에 만듭니다.</p>
+</div>
+<img class="product-img" src="https://ecimg.cafe24img.com/pg1995b08809110011/vivanoce1987/web/product/big/20260625/842f068e28fa2ab089a2b812044bb0cc.png" alt="VA2502 클래식 컴포트 스니커즈">
+</section>
+
+<section class="grid">
+<aside class="panel">
+<h2>기본 제품</h2>
+<div class="facts">
+<div class="fact"><small>제품명</small><strong>VA2502 클래식 컴포트 스니커즈</strong></div>
+<div class="fact"><small>판매가</small><strong>286,000원</strong></div>
+<div class="fact"><small>소재</small><strong>천연 소가죽 · 국내 수제화</strong></div>
+<div class="fact"><small>핵심 메시지</small><strong>깔끔한 배색과 압력 분산 구조를 더한 데일리 감각</strong></div>
+</div>
+<div style="margin-top:12px">
+<span class="badge">화이트</span><span class="badge">블랙</span><span class="badge">블루</span><span class="badge">핑크</span><span class="badge">그레이</span>
+</div>
+<label for="target">광고 타깃</label>
+<select id="target">
+<option value="parents">부모님 선물</option>
+<option value="standing">오래 서서 일하는 사람</option>
+<option value="walking">걷기·여행을 즐기는 중장년층</option>
+<option value="daily">편한 데일리화를 찾는 40~60대</option>
+</select>
+<label for="color">제품 색상</label>
+<select id="color">
+<option>화이트</option><option>블랙</option><option>블루</option><option>핑크</option><option>그레이</option>
+</select>
+<label>만들 콘텐츠</label>
+<div class="types">
+<button class="type active" data-type="all">전체 묶음</button>
+<button class="type" data-type="image">이미지·영상</button>
+<button class="type" data-type="cards">카드뉴스</button>
+<button class="type" data-type="shorts">쇼츠 대본</button>
+<button class="type" data-type="social">SNS 3종</button>
+</div>
+<button class="generate" id="generate">콘텐츠 만들기</button>
+<p class="note">질병 치료·통증 개선을 단정하지 않고, 제품의 구조와 착화감을 중심으로 표현합니다.</p>
+</aside>
+
+<section class="panel">
+<div class="result-head"><h2>생성 결과</h2><button class="copy" id="copy">전체 복사</button></div>
+<pre id="result">왼쪽에서 타깃과 색상을 선택한 뒤
+‘콘텐츠 만들기’를 눌러주세요.</pre>
+</section>
+</section>
+</main>
+<script>
+let selectedType='all';
+document.querySelectorAll('.type').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.type').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active'); selectedType=btn.dataset.type;
+}));
+const targets={
+ parents:{label:'부모님 선물',hook:'부모님 신발, 디자인보다 편안함만 보고 고르셨나요?',scene:'50~60대 한국인 부모와 성인 자녀가 밝고 정돈된 거실에서 신발을 선물하고 함께 살펴보는 자연스러운 순간'},
+ standing:{label:'오래 서서 일하는 사람',hook:'하루 종일 서 있는 발, 신발부터 달라야 합니다.',scene:'오래 서서 일한 50대 한국인 여성이 퇴근 후 편안한 표정으로 신발 끈을 정리하는 현실적인 실내 장면'},
+ walking:{label:'걷기·여행 중장년층',hook:'많이 걷는 날일수록 신발 선택이 중요합니다.',scene:'햇살 좋은 산책로를 여유롭게 걷는 세련된 50대 한국인 여성의 자연스러운 전신 장면'},
+ daily:{label:'40~60대 데일리',hook:'편한 신발은 예쁘기 어렵다는 생각, 바꿔보세요.',scene:'미니멀한 도심 카페 앞에서 캐주얼 의상에 스니커즈를 매치한 세련된 40대 한국인 여성'}
+};
+function imageText(t,c){return `[광고 이미지 프롬프트]
+첨부한 VA2502 제품 사진을 최종 이미지 속 신발의 절대적인 제품 기준으로 사용한다. 신발의 앞코, 가죽 패널, 절개선, 측면 타공 배열, 금속 아일렛, 뒤축 패널, 두꺼운 화이트 아웃솔, 스티치와 좌우 구조를 임의로 변경하지 않는다.
+
+장면: ${t.scene}.
+착용 제품: VA2502 ${c} 컬러.
+구도: 세로 4:5, 70~85mm 화각, 자연스러운 전신 또는 무릎 아래 중심, 신발이 선명하게 보이게 구성.
+분위기: 한국의 현실적인 공간, 부드러운 자연광, 고급스럽고 담백한 라이프스타일 광고, 과한 보정과 인위적인 AI 질감 금지.
+텍스트를 넣을 수 있도록 상단 중앙과 하단에 충분한 여백 확보.
+제품 로고·혀 라벨·타공·색 배합을 새로 만들거나 왜곡하지 않는다.
+
+[영상 프롬프트]
+모델은 제자리에서 신발 끈을 정리한 뒤 두 걸음 천천히 걷는다. 카메라는 낮은 위치에서 신발을 부드럽게 따라간다. 발과 신발의 형태가 흔들리거나 바뀌지 않으며, 새로운 장식·끈·로고가 생기지 않는다. 6초, 세로 9:16, 자연스러운 실제 광고 영상.`}
+
+function cardsText(t,c){return `[카드뉴스 5장 · 1080×1350]
+1장 — ${t.hook}
+2장 — 발이 편하려면, 발을 받쳐주는 구조부터 살펴봐야 하니까.
+3장 — 천연 소가죽의 유연함에 압력 분산을 고려한 구조를 더했습니다.
+4장 — VA2502 ${c} / 단정한 배색, 일상에 자연스럽게 어울리는 디자인.
+5장 — 신는 순간, 다릅니다. 39년이 만든 편안함 / 기능성 수제화 비바로체
+
+디자인 기준: 상단 중앙 짧은 문구, 신발은 4장부터 정확한 제품 사진 기준으로 노출. 아이보리·웜그레이 배경, 촌스럽거나 병원 광고 같은 표현 금지.`}
+
+function shortsText(t,c){return `[30초 쇼츠 대본]
+0~3초
+“${t.hook}”
+
+3~8초
+“매일 신는 신발일수록
+발을 어떻게 받쳐주는지 봐야 합니다.”
+
+8~15초
+“VA2502는 천연 소가죽의 유연함과
+압력 분산을 고려한 구조를 담았습니다.”
+
+15~21초
+“발을 편안하게 감싸면서
+깔끔한 배색으로 옷에도 자연스럽게 어울리고요.”
+
+21~26초
+“오늘 선택한 컬러는 ${c}.
+${t.label}을 위한 데일리 스니커즈.”
+
+26~30초
+“신는 순간, 다릅니다.
+39년이 만든 편안함, 비바로체.”
+
+화면 자막은 문장당 1~2줄, 제품명과 핵심 기능만 강조.`}
+
+function socialText(t,c){return `[유튜브 쇼츠]
+제목: 편한 신발은 예쁠 수 없다고요? VA2502
+설명: 깔끔한 배색에 편안한 구조를 더한 비바로체 데일리 스니커즈. 오늘의 컬러는 ${c}입니다.
+#비바로체 #기능성수제화 #부모님신발 #천연소가죽 #편한신발
+
+[틱톡]
+편안함만 보고 고른 신발 같지 않죠?
+깔끔한 배색과 압력 분산 구조를 담은 VA2502 ${c} 🤍
+#비바로체 #편한운동화 #중년패션 #데일리신발 #수제화
+
+[인스타 릴스]
+편한 신발을 찾다 보면 디자인을 포기하게 될 때가 있잖아요.
+VA2502는 매일 손이 가는 깔끔한 배색에, 발을 편안하게 받쳐주는 구조까지 담았어요.
+${t.label}용 신발을 찾고 있다면 ${c} 컬러도 눈여겨보세요 :)
+#비바로체 #기능성신발 #부모님선물 #천연가죽신발 #편한스니커즈`}
+function build(){
+ const t=targets[document.getElementById('target').value], c=document.getElementById('color').value;
+ const parts={image:imageText(t,c),cards:cardsText(t,c),shorts:shortsText(t,c),social:socialText(t,c)};
+ document.getElementById('result').textContent=selectedType==='all'?Object.values(parts).join('\n\n━━━━━━━━━━━━━━━━━━\n\n'):parts[selectedType];
+}
+document.getElementById('generate').addEventListener('click',build);
+document.getElementById('copy').addEventListener('click',async()=>{
+ await navigator.clipboard.writeText(document.getElementById('result').textContent);
+ const b=document.getElementById('copy'); b.textContent='복사 완료'; setTimeout(()=>b.textContent='전체 복사',1400);
+});
+</script>
+</body>
+</html>
